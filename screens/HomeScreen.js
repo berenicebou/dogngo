@@ -22,7 +22,9 @@ import {
 } from 'native-base';
 
 import news from '../data/newsData';
+
 import NewItem from './NewItem';
+import AdItem from './AdItem';
 
 import { MonoText } from '../components/StyledText';
 
@@ -51,7 +53,9 @@ export default function HomeScreen() {
         </Content>
 
         <View style={styles.sponso}>
-          
+        <Content>
+          <AdItem />
+        </Content>
         </View>
 
         <Content>
@@ -61,6 +65,7 @@ export default function HomeScreen() {
             renderItem={({item}) => <NewItem new={item}/>}
         />
         </Content>
+        
       </ScrollView>
 
     </View>
