@@ -23,8 +23,8 @@ import {
 
 import news from '../data/newsData';
 
-import NewItem from './NewItem';
-import AdItem from './AdItem';
+import NewItem from '../components/NewItem';
+import AdItem from '../components/AdItem';
 
 import { MonoText } from '../components/StyledText';
 

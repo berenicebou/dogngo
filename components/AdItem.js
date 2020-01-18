@@ -14,7 +14,7 @@ class AdItem extends React.Component {
                     renderRow={(ad) =>
                 <ListItem>
                     <Image
-                    style={{height:200, width:150}}
+                    style={{height:210, width:150}}
                     source={ad.img}/>
                 </ListItem>
             }>
