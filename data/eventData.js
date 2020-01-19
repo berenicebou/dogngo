@@ -19,8 +19,7 @@ export default data = [
   {
     id:4,
     title:"Promo",
-    type: "Salon"
+    type: "salon"
     }
- ]
- 
+ ] 
  
