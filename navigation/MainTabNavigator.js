@@ -10,6 +10,8 @@ import CarteScreen from '../screens/CarteScreen';
 import ProfilScreen from '../screens/ProfilScreen';
 import MessagesScreen from '../screens/MessagesScreen';
 
+import EventDetail from '../components/EventDetail';
+
 const config = Platform.select({
   web: { headerMode: 'screen' },
   default: {},
@@ -53,7 +55,12 @@ BaladesStack.path = '';
 
 const CarteStack = createStackNavigator(
   {
-    Carte: CarteScreen,
+    Carte: {
+      screen: CarteScreen,
+    },
+    EventDetail: {
+      screen: EventDetail,
+    }
   },
   config
 );
