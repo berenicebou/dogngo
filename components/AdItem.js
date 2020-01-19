@@ -12,9 +12,10 @@ class AdItem extends React.Component {
         <Content > 
             <List dataArray={ads} horizontal={true}
                     renderRow={(ad) =>
-                <ListItem>
+                <ListItem style={{borderBottomWidth: 0}}>
                     <Image
-                    style={{height:210, width:150}}
+                    style={{flex:1, height:280, width:160, margin:-10, padding:0}}
+                    resizeMode="contain"
                     source={ad.img}/>
                 </ListItem>
             }>

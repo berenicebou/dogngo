@@ -2,11 +2,13 @@ import { AppLoading } from 'expo';
 import { Asset } from 'expo-asset';
 import * as Font from 'expo-font';
 import React, { useState } from 'react';
-import { Platform, StatusBar, StyleSheet, View } from 'react-native';
+import { Platform, StyleSheet, Image } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
-import { Container, Text, Header } from 'native-base';
+import { Container, Text, Header, Left, Right, Thumbnail, Icon} from 'native-base';
+import Colors from './constants/Colors';
 
 
+import StatusBar from './components/StatusBar';
 import AppNavigator from './navigation/AppNavigator';
 
 
@@ -24,8 +26,33 @@ export default function App(props) {
   } else {
     return (
       <Container>
-        {Platform.OS === 'ios' && <StatusBar barStyle="default" />}
-        <Header />
+        <StatusBar backgroundColor={Colors.tintColor} barStyle="light-content" />
+        <Header style={styles.header}>
+          <Left>
+            <Image
+              source={require('./assets/images/burgermenu.png')}
+              fadeDuration={0}
+              style={{width: 30, height: 20}}
+            />
+          </Left>
+          <Right>
+            <Image
+              source={require('./assets/images/loupe.png')}
+              fadeDuration={0}
+              style={{width: 30, height: 30, marginRight:10}}
+            />
+            <Image
+              source={require('./assets/images/notif.png')}
+              fadeDuration={0}
+              style={{width: 30, height: 30, marginRight:10}}
+            />
+            <Image
+              source={require('./assets/images/friends.png')}
+              fadeDuration={0}
+              style={{width: 30, height: 30, marginRight:10}}
+            />
+          </Right>
+        </Header>
         <AppNavigator />
       </Container>
     );
@@ -62,3 +89,17 @@ function handleFinishLoading(setLoadingComplete) {
   setLoadingComplete(true);
 }
 
+const styles = StyleSheet.create({
+  header: {
+      backgroundColor: "white",
+      elevation:10,
+      shadowOpacity: 10,
+      shadowOffset: {
+        height: 5,
+      },
+      shadowRadius: 3,
+    },
+  appNavigator: {
+    elevation:0
+  }
+});
