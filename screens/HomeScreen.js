@@ -18,8 +18,12 @@ import {
   Input,
   Item,
   Thumbnail,
-  Left, 
+  Left,
+  Right, 
 } from 'native-base';
+import Colors from '../constants/Colors';
+import Texts from '../constants/Texts';
+
 
 import news from '../data/newsData';
 
@@ -30,45 +34,40 @@ import { MonoText } from '../components/StyledText';
 
 export default function HomeScreen() {
   return (
-    <View style={styles.container}>
-      <ScrollView
-        style={styles.container}
-        contentContainerStyle={styles.contentContainer}>
-        <Content>
+    <Content>
+        <Content style={{flex:1}}>
+
           <Content>
-            <Left>
-              <Thumbnail source={require('../assets/images/avatar/avatar.jpg')} style={{flex: 1}}/>
-            </Left>
-            <Content>
-              <Item regular>
-                <Input placeholder="Ecrire quelque chose..." />
-              </Item>
-            </Content>
+            <Item style={{borderBottomWidth:0}}>
+              <Thumbnail source={require('../assets/images/avatar/avatar.jpg')}/>
+              <Input placeholder="Ecrire quelque chose..." />
+            </Item>
           </Content>
-          <Content>
-            <Button rounded>
-              <Text>Poster</Text>
-            </Button>
+
+          <Content style={{alignSelf:'flex-end'}}>
+              <Button rounded style={{backgroundColor: Colors.buttonColor}}>
+                <Text>Poster</Text>
+              </Button>
           </Content>
+
         </Content>
 
-        <View style={styles.sponso}>
-        <Content>
+        <Content style={styles.sponso}>
+          <Text style={Texts.h1}>Les promos</Text>
           <AdItem />
         </Content>
-        </View>
-
+        
         <Content>
-        <FlatList
+          <Text style={Texts.h1}>Les actualités</Text>
+          <FlatList
             data={news}
             keyExtractor={(item) => item.id.toString()}
             renderItem={({item}) => <NewItem new={item}/>}
-        />
+          />
         </Content>
-        
-      </ScrollView>
 
-    </View>
+    </Content>
+        
   );
 }
 
@@ -111,9 +110,6 @@ const styles = StyleSheet.create({
     fontSize: 14,
     lineHeight: 19,
     textAlign: 'center',
-  },
-  contentContainer: {
-    paddingTop: 30,
   },
   homeScreenFilename: {
     marginVertical: 7,

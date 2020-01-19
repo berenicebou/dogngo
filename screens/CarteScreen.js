@@ -1,23 +1,20 @@
 import React from 'react';
 import { ScrollView, StyleSheet } from 'react-native';
+import { Text, Content } from 'native-base';
 
 
 export default function CarteScreen() {
   return (
-    <ScrollView style={styles.container}>
-
-    </ScrollView>
+    <Content>
+      
+    </Content>
   );
 }
 
 CarteScreen.navigationOptions = {
-  title: 'Carte',
+  header: null,
 };
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    paddingTop: 15,
-    backgroundColor: '#fff',
-  },
+
 });

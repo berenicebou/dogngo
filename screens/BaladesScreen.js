@@ -1,18 +1,15 @@
 import React from 'react';
 import { ScrollView, StyleSheet } from 'react-native';
+import { Content } from 'native-base';
 
 
 export default function BaladesScreen() {
   return (
-    <ScrollView style={styles.container}>
+    <Content style={styles.container}>
 
-    </ScrollView>
+    </Content>
   );
 }
-
-BaladesScreen.navigationOptions = {
-  title: 'Balades',
-};
 
 const styles = StyleSheet.create({
   container: {
