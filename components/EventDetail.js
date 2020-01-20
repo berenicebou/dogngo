@@ -48,37 +48,55 @@ class EventDetail extends React.Component {
 									</Body>
 								</Left>
 								<Right style={{flexDirection:'row'}}>
-									<Thumbnail source={require("../assets/images/portrait2.png")}/>
-									<Thumbnail source={require("../assets/images/portrait2.png")}/>
-									<Thumbnail source={require("../assets/images/portrait2.png")}/>
+									<Thumbnail style={{marginRight:-20, zIndex:3}} source={require("../assets/images/portrait3.png")}/>
+									<Thumbnail style={{marginRight:-20, zIndex:2}} source={require("../assets/images/portrait4.png")}/>
+									<Thumbnail style={{marginRight:-20, zIndex:1}} source={require("../assets/images/portrait5.png")}/>
 								</Right>
+								<Text>+23</Text>
 								</CardItem>
 							</Card>
 						
 							<Content>
-								<List style={{flexDirection:'row', flex :1 , backgroundColor:Colors.tintColor}}>
-									<ListItem>
-										<Text>2.4 km</Text>
-									</ListItem>
-									<ListItem>
-										<Text>35 minutes</Text>
-									</ListItem>
-									<ListItem>
-										<Text>25/01/20</Text>
-									</ListItem>
-								</List>
+								<View style={{flex: 1, justifyContent: 'center'}}>
+									<List style={{ flexDirection:'row', justifyContent: 'center', backgroundColor:Colors.tintColor}}>
+										<ListItem style={{borderColor: 'black', borderRightWidth:1, borderBottomWidth:0, padding:10}}>
+											<Text>2.4 km</Text>
+										</ListItem>
+										<ListItem style={{borderColor: 'black', borderRightWidth:1,  borderBottomWidth:0, padding:10}}>
+											<Text>35 minutes</Text>
+										</ListItem>
+										<ListItem style={{padding:10}}>
+											<Text>25/01/20</Text>
+										</ListItem>
+									</List>
+								</View>
 							</Content>
  
 							<Content>
 								<Image style={{height: 300, width: null, flex: 1}} source={require('../assets/images/map.png')}/>
 							</Content>
 
+							<Card transparent>
+								<CardItem>		
+								<Left style={{marginTop:-10}}>
+									<Text style={Texts.txtLight}>Balades</Text>
+									<Thumbnail style={{height:20, width:20, marginLeft:5}} source={require('../assets/images/earth.png')}/>
+								</Left>
+								<Body>
+									<Content style={{marginTop:-40}}>
+											<Button rounded style={{backgroundColor: Colors.buttonColor, height:50}}>
+												<Text>Participer</Text>
+											</Button>
+									</Content>
+								</Body>
+								<Right style={{flexDirection:'row'}}>
+									
+								</Right>
+								</CardItem>
+							</Card>
 							
-							<Content style={{alignSelf:'center', marginTop:-20}}>
-								<Button rounded style={{backgroundColor: Colors.buttonColor}}>
-									<Text>Participer</Text>
-								</Button>
-          		</Content>
+							
+						
 
 						<Content>
 							<Card transparent>
