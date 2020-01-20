@@ -3,23 +3,23 @@
 export default data = [
     {
        id:1,
-       title:"SPA",
-       type: "balades",
+       title:"Domaine de la Castille",
+       type: "Balades",
     },
     {
       id:2,
-      title:"Promo",
-      type: "balades",
+      title:"Mont Caume",
+      type: "Balades",
    },
    {
      id:3,
-     title:"Promo",
-     type : "balades",
+     title:"Mont Faron",
+     type : "Balades",
   },
   {
     id:4,
-    title:"Promo",
-    type: "salon"
+    title:"Salon du chiot de Toulon",
+    type: "Salon"
     }
  ] 
  
