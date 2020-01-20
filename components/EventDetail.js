@@ -10,16 +10,16 @@ import Texts from "../constants/Texts"
 import Colors from '../constants/Colors'
 
 class EventDetail extends React.Component {
-  constructor(props) {
-    super(props)
-    this.state = {
-      event: undefined, 
-      isLoading: false 
-    }
+	constructor(props) {
+		super(props)
+		this.state = {
+			event: undefined, 
+			isLoading: false 
+		}
 	}
 	
 	componentDidMount(){
-		 
+
 	}
     
   _displayLoading() {
@@ -31,8 +31,11 @@ class EventDetail extends React.Component {
       )
     }
   }
+  static navigationOptions = ({ navigation }) => ({
+	title: this.navigation.props.params.titleEvent
+  });
     
-      render() {
+	render() {
         return (
           <Content style={styles.main_container}>
 
@@ -79,7 +82,7 @@ class EventDetail extends React.Component {
 							<Card transparent>
 								<CardItem>		
 								<Left style={{marginTop:-10}}>
-									<Text style={Texts.txtLight}>Balades</Text>
+									<Text style={Texts.txtLight}>{this.props.navigation.getParam('typeEvent')}</Text>
 									<Thumbnail style={{height:20, width:20, marginLeft:5}} source={require('../assets/images/earth.png')}/>
 								</Left>
 								<Body>
@@ -142,10 +145,8 @@ const styles = StyleSheet.create({
 })
 
 EventDetail.navigationOptions = {
-	title: "Domaine de la Castille",
 	headerStyle: {
 		marginTop:-50
-
 	}
 };
 

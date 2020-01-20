@@ -10,9 +10,9 @@ class EventItem extends React.Component {
     const events = this.props.event
     const displayDetailEvent = this.props.displayDetailEvent
     return (
-        <Content > 
-            <Button onPress={() => displayDetailEvent(events.id)}>
-                <Text>{events.type}</Text>
+        <Content> 
+            <Button onPress={() => displayDetailEvent(events.id, events.title, events.type)}>
+                <Text>{events.type} : {events.title}</Text>
             </Button>
         </Content>
     )
