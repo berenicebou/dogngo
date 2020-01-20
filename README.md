@@ -6,7 +6,7 @@
 
 ```bash
 # Clone the repository
-git clone --depth 1 https://github.com/berenicebou/dogngo.git
+git clone https://github.com/berenicebou/dogngo.git
 
 # Go to dogngo directory
 cd dogngo
