@@ -1,14 +1,13 @@
 import React from 'react';
 import { ExpoConfigView } from '@expo/samples';
+import {Text} from 'native-base';
 
 export default function ProfilScreen() {
-  /**
-   * Go ahead and delete ExpoConfigView and replace it with your content;
-   * we just wanted to give you a quick view of your config.
-   */
-  return <ExpoConfigView />;
+  return (
+    <Text>Profil</Text>
+  );
 }
 
 ProfilScreen.navigationOptions = {
-  title: 'app.json',
+  header: null,
 };
