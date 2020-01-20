@@ -1,5 +1,5 @@
 import React from 'react';
-import { Platform, Image } from 'react-native';
+import { Platform, Image, StyleSheet } from 'react-native';
 import { createStackNavigator } from 'react-navigation-stack';
 import { createBottomTabNavigator } from 'react-navigation-tabs';
 
@@ -11,6 +11,8 @@ import ProfilScreen from '../screens/ProfilScreen';
 import MessagesScreen from '../screens/MessagesScreen';
 
 import EventDetail from '../components/EventDetail';
+
+import Colors from '../constants/Colors'
 
 const config = Platform.select({
   web: { headerMode: 'screen' },
@@ -28,8 +30,8 @@ HomeStack.navigationOptions = {
   tabBarLabel: 'Actualité',
   tabBarIcon: ({ focused }) =>  (
     focused
-    ? <Image style={{ width: 30, height: 30 }} source={require('../assets/images/icone-menu-actu2.png')} />
-    : <Image style={{ width: 30, height: 30 }} source={require('../assets/images/icone-menu-actu.png')} /> 
+    ? <Image style={styles.icon} source={require('../assets/images/icone-menu-actu2.png')} />
+    : <Image style={styles.icon} source={require('../assets/images/icone-menu-actu.png')} /> 
  )
 };
 
@@ -46,8 +48,8 @@ BaladesStack.navigationOptions = {
   tabBarLabel: 'Balades',
   tabBarIcon: ({ focused }) =>  (
     focused
-    ? <Image style={{ width: 30, height: 30 }} source={require('../assets/images/icone-menu-balade2.png')} />
-    : <Image style={{ width: 30, height: 30 }} source={require('../assets/images/icone-menu-balade.png')} /> 
+    ? <Image style={styles.icon} source={require('../assets/images/icone-menu-balade2.png')} />
+    : <Image style={styles.icon} source={require('../assets/images/icone-menu-balade.png')} /> 
  ),
 };
 
@@ -69,8 +71,8 @@ CarteStack.navigationOptions = {
   tabBarLabel: 'Carte',
   tabBarIcon: ({ focused }) =>  (
     focused
-    ? <Image style={{ width: 30, height: 30 }} source={require('../assets/images/icone-menu-carte2.png')} />
-    : <Image style={{ width: 30, height: 30 }} source={require('../assets/images/icone-menu-carte.png')} /> 
+    ? <Image style={styles.icon} source={require('../assets/images/icone-menu-carte2.png')} />
+    : <Image style={styles.icon} source={require('../assets/images/icone-menu-carte.png')} /> 
  )
 };
 
@@ -87,8 +89,8 @@ ProfilStack.navigationOptions = {
   tabBarLabel: 'Profil',
   tabBarIcon: ({ focused }) =>  (
     focused
-    ? <Image style={{ width: 30, height: 30 }} source={require('../assets/images/icone-menu-profil2.png')} />
-    : <Image style={{ width: 30, height: 30 }} source={require('../assets/images/icone-menu-profil.png')} /> 
+    ? <Image style={styles.icon} source={require('../assets/images/icone-menu-profil2.png')} />
+    : <Image style={styles.icon} source={require('../assets/images/icone-menu-profil.png')} /> 
  )
 };
 
@@ -105,12 +107,19 @@ MessagesStack.navigationOptions = {
   tabBarLabel: 'Messages',
   tabBarIcon: ({ focused }) =>  (
     focused
-    ? <Image style={{ width: 30, height: 30 }} source={require('../assets/images/icone-menu-messages2.png')} />
-    : <Image style={{ width: 30, height: 30 }} source={require('../assets/images/icone-menu-messages.png')} /> 
+    ? <Image style={styles.icon} source={require('../assets/images/icone-menu-messages2.png')} />
+    : <Image style={styles.icon} source={require('../assets/images/icone-menu-messages.png')} /> 
  )
 };
 
 MessagesStack.path = '';
+
+const styles = StyleSheet.create({
+  icon: {
+    height:40,
+    width:40
+  }
+})
 
 const tabNavigator = createBottomTabNavigator({
   HomeStack,
@@ -118,6 +127,12 @@ const tabNavigator = createBottomTabNavigator({
   BaladesStack,
   ProfilStack,
   MessagesStack,
+}, {
+  tabBarOptions: {
+    style:{height:65},
+    activeTintColor: Colors.darkBlue,
+    inactiveTintColor : Colors.darkBlue
+  }, 
 });
 
 tabNavigator.path = '';
