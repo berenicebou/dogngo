@@ -4,39 +4,36 @@ import React from 'react'
 
 import { StyleSheet, View, Image } from 'react-native'
 import { Container, Header, Content, Card, CardItem, Thumbnail, Text, Button, Icon, Left, Body, Right } from 'native-base';
+import Colors from '../constants/Colors';
 
 class NewItem extends React.Component {
   render() {
     const news = this.props.new
     return (
         <Content>
-          <Card>
+          <Card transparent style={{marginBottom:-15}}>
           <CardItem>
               <Left>
-                <Thumbnail source={require('../assets/images/avatar/avatar.jpg')} />
+                <Thumbnail source={news.profile_photo} />
                 <Body>
                   <Text>{news.pseudo}</Text>
+                  <Text note>hier à 21:51</Text>
                 </Body>
               </Left>
             </CardItem>
-            <CardItem cardBody>
-            <Image source={require('../assets/images/avatar/avatar.jpg')} style={{height: 200, width: null, flex: 1}}/>
+            <CardItem cardBody style={{margin:-3}}>
+              <Image source={news.photo} style={{height: 250, width: null, flex: 1}}/>
             </CardItem>
-            <CardItem>
-              <Left>
-                <Button transparent>
-                  <Icon active name="thumbs-up" />
-                  <Text>12 Likes</Text>
-                </Button>
+            <CardItem style={{height:80}}>
+              <Left>               
               </Left>
               <Body>
-                <Button transparent>
-                  <Icon active name="chatbubbles" />
-                  <Text>4 Comments</Text>
-                </Button>
               </Body>
               <Right>
-                <Text>11h ago</Text>
+                <Button transparent>
+                  <Icon active type="MaterialCommunityIcons" color={Colors.tintColor} name="dog"/>
+                  <Text style={{color:Colors.tintColor}}>12</Text>
+                </Button>
               </Right>
             </CardItem>
           </Card>
