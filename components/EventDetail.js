@@ -69,13 +69,13 @@ class EventDetail extends React.Component {
 								<View style={{flex: 1, justifyContent: 'center'}}>
 									<List style={{ flexDirection:'row', justifyContent: 'center', backgroundColor:Colors.tintColor}}>
 										<ListItem style={{borderColor: 'black', borderRightWidth:1, borderBottomWidth:0, padding:10}}>
-											<Text>2.4 km</Text>
+											<Text>{this.props.navigation.getParam('parcoursEvent')} km</Text>
 										</ListItem>
 										<ListItem style={{borderColor: 'black', borderRightWidth:1,  borderBottomWidth:0, padding:10}}>
-											<Text>35 minutes</Text>
+											<Text>{this.props.navigation.getParam('dureeEvent')} minutes</Text>
 										</ListItem>
 										<ListItem style={{padding:10}}>
-											<Text>25/01/20</Text>
+											<Text>{this.props.navigation.getParam('dateEvent')}</Text>
 										</ListItem>
 									</List>
 								</View>
