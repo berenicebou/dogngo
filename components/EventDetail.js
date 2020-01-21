@@ -19,7 +19,7 @@ class EventDetail extends React.Component {
 	}
 	
 	componentDidMount(){
-
+		const {navigation} = this.props;
 	}
     
   _displayLoading() {
@@ -31,9 +31,15 @@ class EventDetail extends React.Component {
       )
     }
   }
-  static navigationOptions = ({ navigation }) => ({
-	title: this.navigation.props.params.titleEvent
-  });
+  
+  static navigationOptions = ({ navigation }) => {
+    return {
+	  title: navigation.getParam('titleEvent'),
+	  headerStyle: {
+		marginTop:-50
+	}
+    };
+  };
     
 	render() {
         return (
@@ -143,11 +149,5 @@ const styles = StyleSheet.create({
     justifyContent: 'center'
     }
 })
-
-EventDetail.navigationOptions = {
-	headerStyle: {
-		marginTop:-50
-	}
-};
 
 export default EventDetail
