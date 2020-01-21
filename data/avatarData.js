@@ -9,7 +9,7 @@ export default data = [
        poster_path:"https://jamaissansmaurice.com/wp-content/uploads/2018/03/IMG_5147-thegem-post-thumb-large.jpeg",
        decription:"Voici mon chien trop mignon",
        release_date:"2017-12-13",
-       balades:[
+       baladesEffectuees:[
          {
             id:1,
             photo:require('../assets/images/image-26.png'),
@@ -28,6 +28,20 @@ export default data = [
             date:"03/01",
             heure:"14:30"
          },
+      ],
+      baladesAVenir:[
+         {
+            id:1,
+            photo:require('../assets/images/image-28map.png'),
+            date:"31/01",
+            heure:"15:30"
+         },
+         {
+            id:2,
+            photo:require('../assets/images/image-28map.png'),
+            date:"10/02",
+            heure:"17:00"
+         }
       ]
     }
  ]
