@@ -6,7 +6,8 @@ export default data = [
        pseudo:"Erika_b",
        prenom:"Erika",
        nom:"Black",
-       poster_path:"https://jamaissansmaurice.com/wp-content/uploads/2018/03/IMG_5147-thegem-post-thumb-large.jpeg",
+       location:"Toulon",
+       profile_pic:require("../assets/images/portrait1.png"),
        decription:"Voici mon chien trop mignon",
        release_date:"2017-12-13",
        baladesEffectuees:[
