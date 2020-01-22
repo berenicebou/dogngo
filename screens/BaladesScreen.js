@@ -5,6 +5,9 @@ import { Text, Content, Thumbnail, Button, Card, CardItem, Left, Right, Body, Li
 import events from '../data/eventData'
 import EventItem from '../components/EventItem'
 
+import Colors from '../constants/Colors'
+import Texts from '../constants/Texts'
+
 import avatar from '../data/avatarData'
 
 class BaladesScreen extends React.Component {
@@ -21,46 +24,64 @@ class BaladesScreen extends React.Component {
   let {height, width} = Dimensions.get('window');   
   return (
     <Content>
-      <Content>
-      <Card>
-            <CardItem>
+      <Text style={Texts.h1}>Mes balades</Text>
+      <Content style={styles.page}>
+      <Card transparent>
+            <CardItem transparent style={styles.titleCard}>
               <Left>
-                <Text>Balades effectués</Text>
+                <Text style={Texts.h2}>Balades à venir</Text>
               </Left>
             </CardItem>
-            <CardItem cardBody>
-              <List>
-                <ListItem></ListItem>
-                <ListItem></ListItem>
-                <ListItem></ListItem>
-              </List>
-            </CardItem>
-
-            <CardItem>
-              <Left>
-                <Text>Balades effectués</Text>
-              </Left>
-            </CardItem>
+            <Card transparent style={styles.cardItemPhoto}>
             <List 
               dataArray={avatar} 
               renderRow={(item) =>
-                <ListItem style={{borderBottomWidth: 0, marginTop:0, paddingTop:0}}>
+                <ListItem style={styles.listItemCard} transparent>
                   <List 
-                    dataArray={item.balades} 
+                    dataArray={item.baladesAVenir} 
                     horizontal={true}
                     renderRow={(balade) =>
-                      <ListItem style={{borderBottomWidth: 0, marginTop:0, paddingTop:0}}>
+                      <ListItem style={styles.photoList}>
                         <Image
-                          style={{flex:1, height:280, width:160, margin:-10, padding:0}}
-                          resizeMode="contain"
+                          style={styles.cardPhoto}
+                          resizeMode="center"
                           source={balade.photo}/>
+                        <Text style={styles.labelPhoto}>{balade.date} à {balade.heure}</Text>
                       </ListItem>
                   }>
                   </List>
                 </ListItem>
             }>
             </List>
+            </Card>
 
+            <CardItem transparent style={styles.titleCard}>
+              <Left>
+                <Text style={Texts.h2}>Balades effectués</Text>
+              </Left>
+            </CardItem>
+            <Card transparent style={styles.cardItemPhoto}>
+            <List 
+              dataArray={avatar} 
+              renderRow={(item) =>
+                <ListItem style={styles.listItemCard} transparent>
+                  <List 
+                    dataArray={item.baladesEffectuees} 
+                    horizontal={true}
+                    renderRow={(balade) =>
+                      <ListItem style={styles.photoList} transparent>
+                        <Image
+                          style={styles.cardPhoto}
+                          resizeMode="center"
+                          source={balade.photo}/>
+                          <Text style={styles.labelPhoto}>{balade.date} à {balade.heure}</Text>
+                      </ListItem>
+                  } transparent>
+                  </List>
+                </ListItem>
+            }>
+            </List>
+            </Card>
 
           </Card>
       </Content>
@@ -71,9 +92,9 @@ class BaladesScreen extends React.Component {
 }
 
 BaladesScreen.navigationOptions = {
-  title: "Mes balades",
+  header: null,
   headerStyle: {
-		marginTop:-50
+    marginTop:-50,
 	}
 };
 
@@ -83,6 +104,48 @@ const styles = StyleSheet.create({
     backgroundColor:'transparent',
     justifyContent: 'center',
     alignItems: 'center',
+  },
+  page:{
+    marginLeft:-15
+  },
+  cardItemPhoto:{
+    height:300,
+    marginLeft:-10,
+    marginBottom:-40
+  },
+  listItemCard:{
+    borderBottomWidth: 0, 
+    marginTop:-50, 
+    paddingTop:0,
+  },
+  photoList:{
+    borderBottomWidth: 0,
+    marginTop:0,
+    justifyContent:'center',
+    alignContent:'center',
+    height:300,
+    width:150,
+    flexDirection:'column',
+    flex:1,
+    margin:-10,
+  },
+  cardPhoto:{
+    flex:1, 
+    height: "100%",
+    width:"105%",
+    padding:0, 
+    margin:10, 
+  },
+  labelPhoto:{
+    backgroundColor: Colors.tintColor,
+    borderBottomEndRadius:20,
+    borderBottomLeftRadius:20,
+    borderBottomRightRadius:20,
+    borderBottomStartRadius:20,
+    padding:10,
+    textAlign:'center',
+    marginTop:-50,
+    width:140,
   }
 });
 
