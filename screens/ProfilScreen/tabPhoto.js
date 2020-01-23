@@ -8,13 +8,6 @@ import { Col, Row, Grid } from "react-native-easy-grid";
 
 export default class TabPhoto extends React.Component {
   render() {
-    const rows = 3;
-    const cols = 2;
-    const marginHorizontal = 4;
-    const marginVertical = 4;
-    const width = (Dimensions.get('window').width / cols) - (marginHorizontal * (cols + 1));
-    const height = (Dimensions.get('window').height / rows) - (marginVertical * (rows + 1));
-
     const photos = this.props.photos
         return (
             <Content>
@@ -38,8 +31,8 @@ export default class TabPhoto extends React.Component {
 
 const styles = StyleSheet.create({
     image: {
-        width: (Dimensions.get('window').width / 3) - 10,
-        height: 120,
-        margin: 5,
+        width: (Dimensions.get('window').width / 3) - 8,
+        height: 130,
+        margin: 3,
     },
 })

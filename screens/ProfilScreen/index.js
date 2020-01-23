@@ -1,7 +1,8 @@
 import React from 'react';
 import { ExpoConfigView } from '@expo/samples';
 import {Image, StyleSheet} from 'react-native';
-import {Text, Content, Thumbnail, Card, CardItem, Tab, Tabs, Button} from 'native-base';
+import {Text, Content, Thumbnail, Card, CardItem, Tab, Tabs, Button, Left, Right} from 'native-base';
+import { Col, Row, Grid } from "react-native-easy-grid";
 
 import avatar from '../../data/avatarData'
 
@@ -14,19 +15,27 @@ export default class ProfilScreen extends React.Component {
   render(){
     return (
       <Content>
-        <Content>
+
+        <Content style={styles.profileHeadContent}>
               <Card style={styles.profileHead} transparent>
-                <Thumbnail style={{width:80, height:80}} source={avatar.profile_pic}/>
+                <Thumbnail style={{width:90, height:90}} source={avatar.profile_pic}/>
                 <CardItem style={{flexDirection:'row'}}>
-                  <Text>{avatar.prenom} {avatar.nom},</Text><Text> de {avatar.location}</Text>
+                  <Text>{avatar.prenom} {avatar.nom},</Text><Text style={{color:"grey"}}> de {avatar.location}</Text>
                 </CardItem>
               </Card>
-          <Button>
-            <Text>Modifier</Text>
-          </Button>
+              <Content style={{alignSelf:'center', marginTop:-20, marginBottom:20}}>
+                <Button rounded style={{backgroundColor: Colors.buttonColor}}>
+                  <Text>Modifier</Text>
+                </Button>
+              </Content>
+              <Grid>
+                <Col><Text style={styles.headInfo}>43</Text><Text style={styles.headInfo}>Amis</Text></Col>
+                <Col><Text style={styles.headInfo}>27</Text><Text style={styles.headInfo}>Balades</Text></Col>
+              </Grid>
         </Content>
+
         <Content>
-          <Tabs tabBarUnderlineStyle={{backgroundColor:Colors.darkBlue}}>
+          <Tabs tabBarUnderlineStyle={{backgroundColor:Colors.darkBlue}} tabContainerStyle={{elevation: 0, marginBottom:5}}>
             <Tab heading='Mur' tabStyle={styles.tabColor} activeTabStyle={styles.tabColor} textStyle={styles.tabText} activeTextStyle={styles.tabText}>
              <TabMur avatar={avatar}/> 
             </Tab>
@@ -44,16 +53,25 @@ export default class ProfilScreen extends React.Component {
 }
 
 const styles = StyleSheet.create({
+  profileHeadContent:{
+    marginBottom:15,
+  },
   profileHead:{
     alignContent:'center',
     alignItems:'center',
-    height:150
+    height:150,
+  },
+  headInfo:{
+    textAlign:'center',
+    fontSize:16,
+    fontWeight:"bold",
   },
   tabColor:{
-    backgroundColor:"white"
+    backgroundColor:"white",
   },
   tabText:{
-    color:"black"
+    color:"black",
+    fontSize:20,
   }
 })
 
