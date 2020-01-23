@@ -26,33 +26,27 @@ class BaladesScreen extends React.Component {
     <Content>
       <Text style={Texts.h1}>Mes balades</Text>
       <Content style={styles.page}>
+
       <Card transparent>
             <CardItem transparent style={styles.titleCard}>
               <Left>
                 <Text style={Texts.h2}>Balades à venir</Text>
               </Left>
             </CardItem>
-            <Card transparent style={styles.cardItemPhoto}>
-            <List 
-              dataArray={avatar} 
-              renderRow={(item) =>
-                <ListItem style={styles.listItemCard} transparent>
-                  <List 
-                    dataArray={item.baladesAVenir} 
-                    horizontal={true}
-                    renderRow={(balade) =>
-                      <ListItem style={styles.photoList}>
-                        <Image
+            <Card transparent>
+              <List 
+                dataArray={avatar.baladesAVenir} 
+                horizontal={true}
+                renderRow={(balade) =>
+                  <ListItem style={styles.photoList}>
+                      <Image
                           style={styles.cardPhoto}
                           resizeMode="center"
                           source={balade.photo}/>
                         <Text style={styles.labelPhoto}>{balade.date} à {balade.heure}</Text>
-                      </ListItem>
-                  }>
-                  </List>
-                </ListItem>
-            }>
-            </List>
+                  </ListItem>
+                }>
+              </List>
             </Card>
 
             <CardItem transparent style={styles.titleCard}>
@@ -60,27 +54,20 @@ class BaladesScreen extends React.Component {
                 <Text style={Texts.h2}>Balades effectués</Text>
               </Left>
             </CardItem>
-            <Card transparent style={styles.cardItemPhoto}>
-            <List 
-              dataArray={avatar} 
-              renderRow={(item) =>
-                <ListItem style={styles.listItemCard} transparent>
-                  <List 
-                    dataArray={item.baladesEffectuees} 
-                    horizontal={true}
-                    renderRow={(balade) =>
-                      <ListItem style={styles.photoList} transparent>
-                        <Image
+            <Card transparent>
+              <List
+                dataArray={avatar.baladesEffectuees} 
+                horizontal={true}
+                renderRow={(balade) =>
+                  <ListItem style={styles.photoList} transparent>
+                      <Image
                           style={styles.cardPhoto}
                           resizeMode="center"
                           source={balade.photo}/>
                           <Text style={styles.labelPhoto}>{balade.date} à {balade.heure}</Text>
                       </ListItem>
                   } transparent>
-                  </List>
-                </ListItem>
-            }>
-            </List>
+                </List>
             </Card>
 
           </Card>
@@ -106,10 +93,13 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   page:{
-    marginLeft:-15
+    marginLeft:-15,
+  },
+  titleCard:{
+    marginBottom:-50,
   },
   cardItemPhoto:{
-    height:300,
+    height:320,
     marginLeft:-10,
     marginBottom:-40
   },
@@ -123,8 +113,8 @@ const styles = StyleSheet.create({
     marginTop:0,
     justifyContent:'center',
     alignContent:'center',
-    height:300,
-    width:150,
+    height:320,
+    width:160,
     flexDirection:'column',
     flex:1,
     margin:-10,
@@ -144,8 +134,8 @@ const styles = StyleSheet.create({
     borderBottomStartRadius:20,
     padding:10,
     textAlign:'center',
-    marginTop:-50,
-    width:140,
+    marginTop:-60,
+    width:150,
   }
 });
 
