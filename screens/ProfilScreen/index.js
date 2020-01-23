@@ -36,13 +36,13 @@ export default class ProfilScreen extends React.Component {
 
         <Content>
           <Tabs tabBarUnderlineStyle={{backgroundColor:Colors.darkBlue}} tabContainerStyle={{elevation: 0, marginBottom:5}}>
-            <Tab heading='Mur' tabStyle={styles.tabColor} activeTabStyle={styles.tabColor} textStyle={styles.tabText} activeTextStyle={styles.tabText}>
+            <Tab heading='Mur' tabStyle={styles.tabColor} activeTabStyle={styles.tabColor} textStyle={styles.tabText} activeTextStyle={styles.tabTextAct}>
              <TabMur avatar={avatar}/> 
             </Tab>
-            <Tab heading='Chien' tabStyle={styles.tabColor} activeTabStyle={styles.tabColor} textStyle={styles.tabText} activeTextStyle={styles.tabText}>
+            <Tab heading='Chien' tabStyle={styles.tabColor} activeTabStyle={styles.tabColor} textStyle={styles.tabText} activeTextStyle={styles.tabTextAct}>
               <TabChien chien={avatar.chien}/>
             </Tab>
-            <Tab heading='Photos' tabStyle={styles.tabColor} activeTabStyle={styles.tabColor} textStyle={styles.tabText} activeTextStyle={styles.tabText}>
+            <Tab heading='Photos' tabStyle={styles.tabColor} activeTabStyle={styles.tabColor} textStyle={styles.tabText} activeTextStyle={styles.tabTextAct}>
               <TabPhotos photos={avatar.photos}/>
             </Tab>
           </Tabs>
@@ -72,6 +72,11 @@ const styles = StyleSheet.create({
   tabText:{
     color:"black",
     fontSize:20,
+  },
+  tabTextAct:{
+    color:'black',
+    fontSize:20,
+    fontWeight:"bold",
   }
 })
 

@@ -13,15 +13,17 @@ export default class TabChien extends React.Component {
     const chien = this.props.chien
         return (
             <Content> 
-                <Card style={{alignContent:'center', alignItems:'center'}} transparent>
-                    <Thumbnail source={chien.photo}/>
-                    <CardItem style={{flexDirection:'row'}}>
-                        <Text>{chien.prenoms}</Text>
-                        <Text>{chien.age}</Text>
-                        <Text>{chien.race}</Text>
+                <Card style={{alignContent:'center', alignItems:'center', marginTop:25, marginLeft:15}} transparent>
+                    <Thumbnail style={{height:130, width:130}} source={chien.photo}/>
+                    <CardItem style={{flexDirection:'column'}}>
+                        <Text style={{fontSize:18}}>{chien.prenom}</Text>
+                        <Text style={{color:"grey"}}>{chien.age}</Text>
+                        <Text style={{color:"grey"}}>{chien.race}</Text>
                     </CardItem>
-                    <Text>Description :</Text>
-                    <Text>{chien.description}</Text>
+                    <Content style={{flexDirection:'column'}}>
+                        <Text style={{fontSize:20, textAlign:'left', fontWeight:'bold'}}>Description :</Text>
+                        <Text>{chien.description}</Text>
+                    </Content>
                 </Card>
             </Content>
         )
@@ -29,5 +31,5 @@ export default class TabChien extends React.Component {
 }
 
 const styles = StyleSheet.create({
-    
+
 })
