@@ -10,7 +10,7 @@ import CarteScreen from '../screens/CarteScreen';
 import ProfilScreen from '../screens/ProfilScreen';
 import MessagesScreen from '../screens/MessagesScreen';
 
-import EventDetail from '../components/EventDetail';
+import EventDetail from '../screens/CarteScreen/EventDetail';
 
 import Colors from '../constants/Colors'
 

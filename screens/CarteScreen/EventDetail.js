@@ -4,10 +4,10 @@ import React from 'react'
 import { StyleSheet, View, ActivityIndicator, Image} from 'react-native'
 import { Text, Content, Thumbnail, Left, Body, CardItem, Card, Right, List, ListItem, Button } from 'native-base'
 
-import event from "../data/eventData"
-import chiens from '../data/chienData'
-import Texts from "../constants/Texts"
-import Colors from '../constants/Colors'
+import event from "../../data/eventData"
+import chiens from '../../data/chienData'
+import Texts from "../../constants/Texts"
+import Colors from '../../constants/Colors'
 
 class EventDetail extends React.Component {
 	constructor(props) {
@@ -50,16 +50,16 @@ class EventDetail extends React.Component {
 							<Card transparent>
 								<CardItem>		
 								<Left>
-									<Thumbnail source={require("../assets/images/portrait2.png")}/>
+									<Thumbnail source={require("../../assets/images/portrait2.png")}/>
 									<Body>
 										<Text>Paul Lemaire</Text>
 										<Text note>et son bichon</Text>
 									</Body>
 								</Left>
 								<Right style={{flexDirection:'row'}}>
-									<Thumbnail style={{marginRight:-20, zIndex:3}} source={require("../assets/images/portrait3.png")}/>
-									<Thumbnail style={{marginRight:-20, zIndex:2}} source={require("../assets/images/portrait4.png")}/>
-									<Thumbnail style={{marginRight:-20, zIndex:1}} source={require("../assets/images/portrait5.png")}/>
+									<Thumbnail style={{marginRight:-20, zIndex:3}} source={require("../../assets/images/portrait3.png")}/>
+									<Thumbnail style={{marginRight:-20, zIndex:2}} source={require("../../assets/images/portrait4.png")}/>
+									<Thumbnail style={{marginRight:-20, zIndex:1}} source={require("../../assets/images/portrait5.png")}/>
 								</Right>
 								<Text>+23</Text>
 								</CardItem>
@@ -82,14 +82,14 @@ class EventDetail extends React.Component {
 							</Content>
  
 							<Content>
-								<Image style={{height: 300, width: null, flex: 1}} source={require('../assets/images/map.png')}/>
+								<Image style={{height: 300, width: null, flex: 1}} source={require('../../assets/images/map.png')}/>
 							</Content>
 
 							<Card transparent>
 								<CardItem>		
 								<Left style={{marginTop:-10}}>
 									<Text style={Texts.txtLight}>{this.props.navigation.getParam('typeEvent')}</Text>
-									<Thumbnail style={{height:20, width:20, marginLeft:5}} source={require('../assets/images/earth.png')}/>
+									<Thumbnail style={{height:20, width:20, marginLeft:5}} source={require('../../assets/images/earth.png')}/>
 								</Left>
 								<Body>
 									<Content style={{marginTop:-40}}>
