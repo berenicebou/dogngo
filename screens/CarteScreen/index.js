@@ -57,7 +57,7 @@ class CarteScreen extends React.Component {
       coordinate={{latitude:marker.latitude, longitude:marker.longitude}}
       title={marker.title}
       description={marker.type}
-      pinColor={Colors.darkBlue}
+      image={marker.icon}
       onCalloutPress={() => this._displayDetailEvent(marker.id, marker.title, marker.type, marker.duree, marker.parcours, marker.date)}
     //   image={marker.icon}
     />

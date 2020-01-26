@@ -10,7 +10,7 @@ export default data = [
        parcours: "2.3",
        latitude:43.161260,
        longitude:6.067227,
-       icon:require('../assets/images/image-44.png')
+       icon:require('../assets/images/marqueurs-02.png')
     },
     {
       id:2,
@@ -21,7 +21,7 @@ export default data = [
       parcours: "2.4",
       latitude:43.183259,
       longitude:5.899638,
-      icon:require('../assets/images/image-44.png')
+      icon:require('../assets/images/marqueurs-02.png')
    },
    {
       id:3,
@@ -32,7 +32,7 @@ export default data = [
       parcours: "3",   
       latitude:3.105255,
       longitude:5.927721,
-      icon:require('../assets/images/image-44.png')
+      icon:require('../assets/images/marqueurs-02.png')
   },
   {
     id:4,
@@ -43,7 +43,7 @@ export default data = [
     parcours: "3",
     latitude:43.124830,
     longitude:5.928624,
-    icon:require('../assets/images/image-45.png')
+    icon:require('../assets/images/marqueurs-03.png')
 
     }
  ] 
