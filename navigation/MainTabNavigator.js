@@ -11,6 +11,7 @@ import ProfilScreen from '../screens/ProfilScreen';
 import MessagesScreen from '../screens/MessagesScreen';
 
 import EventDetail from '../screens/CarteScreen/EventDetail';
+import BaladeDetail from '../screens/BaladesScreen/BaladeDetail';
 
 import Colors from '../constants/Colors'
 
@@ -39,7 +40,12 @@ HomeStack.path = '';
 
 const BaladesStack = createStackNavigator(
   {
-    Balades: BaladesScreen,
+    Balades: {
+      screen :BaladesScreen
+    },
+    BaladeDetail: {
+      screen : BaladeDetail
+    }
   },
   config
 );

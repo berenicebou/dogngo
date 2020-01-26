@@ -1,23 +1,24 @@
 import React from 'react';
-import { ScrollView, StyleSheet, Image, Dimensions, FlatList } from 'react-native';
+import { ScrollView, StyleSheet, Image, Dimensions, FlatList, TouchableHighlight } from 'react-native';
 import { Text, Content, Thumbnail, Button, Card, CardItem, Left, Right, Body, ListItem, List} from 'native-base';
 
-import events from '../data/eventData'
-import EventItem from '../components/EventItem'
+import events from '../../data/eventData'
+import EventItem from '../../components/EventItem'
 
-import Colors from '../constants/Colors'
-import Texts from '../constants/Texts'
+import Colors from '../../constants/Colors'
+import Texts from '../../constants/Texts'
 
-import avatar from '../data/avatarData'
+import avatar from '../../data/avatarData'
+import { TouchableOpacity } from 'react-native-gesture-handler';
 
 class BaladesScreen extends React.Component {
   constructor(props){
     super(props)
   }
 
-  _displayDetailEvent = (idEvent) => {
+  _displayDetailBalade = (idEvent) => {
     console.log(idEvent)
-    this.props.navigation.navigate("EventDetail" , { idEvent: idEvent })
+    this.props.navigation.navigate("BaladeDetail" , { idEvent: idEvent})
   }
 
   render(){
@@ -39,11 +40,14 @@ class BaladesScreen extends React.Component {
                 horizontal={true}
                 renderRow={(balade) =>
                   <ListItem style={styles.photoList}>
+                    <TouchableOpacity onPress={() => this._displayDetailBalade(balade.id)}>
                       <Image
                           style={styles.cardPhoto}
                           resizeMode="center"
-                          source={balade.photo}/>
-                        <Text style={styles.labelPhoto}>{balade.date} à {balade.heure}</Text>
+                          source={balade.photo}
+                      />                       
+                    </TouchableOpacity>
+                    <Text style={styles.labelPhoto}>{balade.date} à {balade.heure}</Text>
                   </ListItem>
                 }>
               </List>
@@ -122,7 +126,6 @@ const styles = StyleSheet.create({
   cardPhoto:{
     flex:1, 
     height: "100%",
-    width:"105%",
     padding:0, 
     margin:10, 
   },
