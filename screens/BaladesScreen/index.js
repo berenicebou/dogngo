@@ -1,6 +1,6 @@
 import React from 'react';
 import { ScrollView, StyleSheet, Image, Dimensions, FlatList, TouchableHighlight } from 'react-native';
-import { Text, Content, Thumbnail, Button, Card, CardItem, Left, Right, Body, ListItem, List} from 'native-base';
+import { Text, Content, Thumbnail, Button, Card, CardItem, Left, Right, Body, ListItem, List, View} from 'native-base';
 
 import events from '../../data/eventData'
 import EventItem from '../../components/EventItem'
@@ -16,9 +16,13 @@ class BaladesScreen extends React.Component {
     super(props)
   }
 
-  _displayDetailBalade = (idEvent) => {
+  _displayDetailBalade = (idEvent, type) => {
     console.log(idEvent)
-    this.props.navigation.navigate("BaladeDetail" , { idEvent: idEvent})
+    if(type == "Effectue"){
+      this.props.navigation.navigate('BaladeDetailEffectue', {idEvent : idEvent})
+    } else {
+      this.props.navigation.navigate("BaladeDetail" , { idEvent: idEvent})
+    }
   }
 
   render(){
@@ -39,15 +43,17 @@ class BaladesScreen extends React.Component {
                 dataArray={avatar.baladesAVenir} 
                 horizontal={true}
                 renderRow={(balade) =>
-                  <ListItem style={styles.photoList}>
-                    <TouchableOpacity onPress={() => this._displayDetailBalade(balade.id)}>
-                      <Image
-                          style={styles.cardPhoto}
-                          resizeMode="center"
-                          source={balade.photo}
-                      />                       
-                    </TouchableOpacity>
-                    <Text style={styles.labelPhoto}>{balade.date} à {balade.heure}</Text>
+                  <ListItem>
+                    <TouchableOpacity onPress={() => this._displayDetailBalade(balade.id, "AVenir")}>
+                      <View style={styles.photoList}>
+                        <Image
+                            style={styles.cardPhoto}
+                            resizeMode="center"
+                            source={balade.photo}
+                        />
+                        <Text style={styles.labelPhoto}>{balade.date} à {balade.heure}</Text>              
+                      </View>         
+                    </TouchableOpacity>             
                   </ListItem>
                 }>
               </List>
@@ -63,12 +69,17 @@ class BaladesScreen extends React.Component {
                 dataArray={avatar.baladesEffectuees} 
                 horizontal={true}
                 renderRow={(balade) =>
-                  <ListItem style={styles.photoList} transparent>
-                      <Image
-                          style={styles.cardPhoto}
-                          resizeMode="center"
-                          source={balade.photo}/>
-                          <Text style={styles.labelPhoto}>{balade.date} à {balade.heure}</Text>
+                  <ListItem transparent>
+                      <TouchableOpacity onPress={() => this._displayDetailBalade(balade.id, "Effectue")}>
+                      <View style={styles.photoList}>
+                        <Image
+                            style={styles.cardPhoto}
+                            resizeMode="center"
+                            source={balade.photo}
+                        />
+                        <Text style={styles.labelPhoto}>{balade.date} à {balade.heure}</Text>              
+                      </View>         
+                    </TouchableOpacity>
                       </ListItem>
                   } transparent>
                 </List>
@@ -117,8 +128,9 @@ const styles = StyleSheet.create({
     marginTop:0,
     justifyContent:'center',
     alignContent:'center',
+    alignItems:'center',
     height:320,
-    width:160,
+    width:180,
     flexDirection:'column',
     flex:1,
     margin:-10,
@@ -126,8 +138,10 @@ const styles = StyleSheet.create({
   cardPhoto:{
     flex:1, 
     height: "100%",
+    width:"90%",
     padding:0, 
-    margin:10, 
+    margin:10,
+    alignSelf:'center' 
   },
   labelPhoto:{
     backgroundColor: Colors.tintColor,
@@ -137,8 +151,8 @@ const styles = StyleSheet.create({
     borderBottomStartRadius:20,
     padding:10,
     textAlign:'center',
-    marginTop:-60,
-    width:150,
+    marginTop:-100,
+    width:180,
   }
 });
 

@@ -1,15 +1,15 @@
-// BaladesScreen/BaladeDetail.js
+// BaladesScreen/BaladeDetailEffectue.js
 
 import React from 'react'
 import { StyleSheet, View, ActivityIndicator, Image} from 'react-native'
-import { Text, Content, Thumbnail, Left, Body, CardItem, Card, Right, List, ListItem, Button } from 'native-base'
+import { Text, Content, Thumbnail, Left, Body, CardItem, Card, Right, List, ListItem, Button, Icon } from 'native-base'
 
 import event from "../../data/eventData"
 import chiens from '../../data/chienData'
 import Texts from "../../constants/Texts"
 import Colors from '../../constants/Colors'
 
-export default class BaladeDetail extends React.Component {
+export default class BaladeDetailEffectue extends React.Component {
 	constructor(props) {
 		super(props)
 		this.state = {
@@ -84,24 +84,12 @@ export default class BaladeDetail extends React.Component {
 								<Image style={{height: 300, width: null, flex: 1}} source={require('../../assets/images/map.png')}/>
 							</Content>
 
-							<Card transparent>
-								<CardItem>		
-								<Left style={{marginTop:-10}}>
-									<Text style={Texts.txtLight}>TEST</Text>
-									<Thumbnail style={{height:20, width:20, marginLeft:5}} source={require('../../assets/images/earth.png')}/>
-								</Left>
-								<Body>
-									<Content style={{marginTop:-40}}>
-											<Button disabled rounded style={{backgroundColor: Colors.buttonColor, height:50}}>
-												<Text>Je participe</Text>
+								<Content style={{marginTop:-10}}>
+								    <Button disabled style={{ height:50, backgroundColor: Colors.buttonColor, flex:1}} full>
+												<Text>Effectue</Text>
+                                                <Icon name="checkcircleo" type="AntDesign"/>
 											</Button>
-									</Content>
-								</Body>
-								<Right style={{flexDirection:'row'}}>
-									
-								</Right>
-								</CardItem>
-							</Card>
+									</Content>																
 							
 							
 						
