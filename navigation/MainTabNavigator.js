@@ -12,6 +12,7 @@ import MessagesScreen from '../screens/MessagesScreen';
 
 import EventDetail from '../screens/CarteScreen/EventDetail';
 import BaladeDetail from '../screens/BaladesScreen/BaladeDetail';
+import BaladeDetailEffectue from "../screens/BaladesScreen/BaladeDetailEffectue"
 
 import Colors from '../constants/Colors'
 
@@ -45,7 +46,10 @@ const BaladesStack = createStackNavigator(
     },
     BaladeDetail: {
       screen : BaladeDetail
-    }
+    },
+    BaladeDetailEffectue: {
+      screen: BaladeDetailEffectue
+    },
   },
   config
 );
