@@ -86,11 +86,11 @@ class CarteScreen extends React.Component {
         </Card>
         <Card transparent style={{flexDirection:'row'}}>
         <Button title="Hide/Show Component" onPress={this.ShowHideComponent} transparent>
-              <Icon name="ios-arrow-forward" type="Ionicons"/>
-              <Text>Filtre</Text>
+              <Icon style={{backgroundColor:"black"}} name="ios-arrow-forward" type="Ionicons"/>
+              <Text style={styles.btnFiltres}>Filtre</Text>
         </Button>
         {this.state.filtre ? (
-        <Button rounded disabled style={{backgroundColor:Colors.tintColor}}>
+        <Button rounded disabled style={{backgroundColor:"white", borderColor:Colors.tintColor}}>
           <Text>{this.state.filtre}</Text>
         </Button>
         ) : null }
