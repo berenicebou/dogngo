@@ -6,7 +6,7 @@ import { Marker } from 'react-native-maps';
 import { Col, Row, Grid } from "react-native-easy-grid";
 
 
-import events from '../../data/eventData'
+import eventsData from '../../data/eventData'
 import EventItem from '../../components/EventItem'
 
 import Colors from '../../constants/Colors'  
@@ -17,8 +17,16 @@ class CarteScreen extends React.Component {
     this.state = {
       show: false,
       filtre: undefined,
+      events: [],
     }
   }
+
+  componentDidMount(){
+    this.setState({
+        events : eventsData
+      })
+}
+  
   _displayDetailEvent = (idEvent, titleEvent, typeEvent, dureeEvent, parcoursEvent, dateEvent) => {
     console.log(idEvent, titleEvent)
     this.props.navigation.navigate("EventDetail" , { idEvent: idEvent, titleEvent: titleEvent, typeEvent :typeEvent, dureeEvent: dureeEvent, parcoursEvent: parcoursEvent, dateEvent: dateEvent })
@@ -32,33 +40,20 @@ class CarteScreen extends React.Component {
     }
   };
 
+  SelectEvent = (typeEvent) => {
+    this.setState({
+      events: eventsData.filter(data => data.type === typeEvent),
+      filtre : typeEvent,
+      show: false,
+    })
+  }
+
   render(){
-  let {height, width} = Dimensions.get('window');   
+  let {height, width} = Dimensions.get('window')
+  events = this.state.events
   return (
     <Content>
-      <Card style={styles.searchBar} transparent>
-          <Item>
-            <Input />
-            <Button style={{backgroundColor:Colors.tintColor}}>
-              <Text>Chercher</Text>
-            </Button>
-          </Item>     
-      </Card>
-      <Button rounded transparent title="Hide/Show Component" onPress={this.ShowHideComponent}>
-            <Icon name="ios-arrow-forward" type="Ionicons"/>
-            <Text>Filtre</Text>
-      </Button>
-
-      {/* <Content>
-      <FlatList
-        data={events}
-        keyExtractor={(item) => item.id.toString()}
-        renderItem={({item}) => <EventItem event={item} displayDetailEvent={this._displayDetailEvent}/>}  
-        />
-      </Content> */}
       
-      {/* <Image style={[styles.backgroundImage, {height:height, width: width}]} source={require('../assets/images/fakemap.png')}/> */}
-
      
       <MapView 
         style={{flex:1, height:height, width:width}}
@@ -69,20 +64,39 @@ class CarteScreen extends React.Component {
           longitudeDelta: 0.1,
         }}>
             {events.map(marker => (
-    <Marker
-      coordinate={{latitude:marker.latitude, longitude:marker.longitude}}
-      title={marker.title}
-      description={marker.type}
-      image={marker.icon}
-      onCalloutPress={() => this._displayDetailEvent(marker.id, marker.title, marker.type, marker.duree, marker.parcours, marker.date)}
-    //   image={marker.icon}
-    />
-  ))}
-        
-    
-       
+              <Marker
+                coordinate={{latitude:marker.latitude, longitude:marker.longitude}}
+                title={marker.title}
+                description={marker.type}
+                image={marker.icon}
+                onCalloutPress={() => this._displayDetailEvent(marker.id, marker.title, marker.type, marker.duree, marker.parcours, marker.date)}
+              //   image={marker.icon}
+              />
+            ))}     
       </MapView> 
       
+      <View style={styles.headerSearch}>
+        <Card style={styles.searchBar} transparent>
+            <Item>
+              <Input backgroundColor="white" style={{borderRadius:20}} />
+              <Button rounded style={{backgroundColor:Colors.tintColor}}>
+                <Text>Chercher</Text>
+              </Button>
+            </Item>     
+        </Card>
+        <Card transparent style={{flexDirection:'row'}}>
+        <Button title="Hide/Show Component" onPress={this.ShowHideComponent} transparent>
+              <Icon name="ios-arrow-forward" type="Ionicons"/>
+              <Text>Filtre</Text>
+        </Button>
+        {this.state.filtre ? (
+        <Button rounded disabled style={{backgroundColor:Colors.tintColor}}>
+          <Text>{this.state.filtre}</Text>
+        </Button>
+        ) : null }
+        </Card>
+      </View>
+
       {this.state.show ? (
           <View style={styles.filtreContent}>  
               <Button transparent>
@@ -92,7 +106,7 @@ class CarteScreen extends React.Component {
               <Grid style={{margin:30, marginTop:10}}>
                 <Col> 
                   <Button rounded style={styles.btnFiltres}>
-                    <Text uppercase={false} style={styles.textFiltres}>Balades</Text>  
+                    <Text uppercase={false} style={styles.textFiltres} onPress={() => this.SelectEvent("Balades")}>Balades</Text>  
                   </Button>
                   <Button rounded style={styles.btnFiltres}>
                     <Text uppercase={false} style={styles.textFiltres}>Dogsitting</Text>
@@ -128,7 +142,6 @@ class CarteScreen extends React.Component {
           </View>
         ) : null}
 
-
     </Content>
   );
 }
@@ -150,6 +163,14 @@ const styles = StyleSheet.create({
   },
   searchBar:{
     backgroundColor: 'transparent',
+    borderRadius:50,
+  },
+  headerSearch:{
+    position:'absolute',
+    top:10,
+    bottom:0,
+    left:20,
+    right:20
   },
   filtreContent:{
     backgroundColor: 'rgba(255,255,255,0.6)',

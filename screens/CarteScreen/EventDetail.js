@@ -68,14 +68,14 @@ class EventDetail extends React.Component {
 							<Content>
 								<View style={{flex: 1, justifyContent: 'center'}}>
 									<List style={{ flexDirection:'row', justifyContent: 'center', backgroundColor:Colors.tintColor}}>
-										<ListItem style={{borderColor: 'black', borderRightWidth:1, borderBottomWidth:0, padding:10}}>
-											<Text>{this.props.navigation.getParam('parcoursEvent')} km</Text>
+										<ListItem style={{borderColor: 'white', borderRightWidth:1, borderBottomWidth:0, padding:10}}>
+											<Text style={{color:"white"}}>{this.props.navigation.getParam('parcoursEvent')} km</Text>
 										</ListItem>
-										<ListItem style={{borderColor: 'black', borderRightWidth:1,  borderBottomWidth:0, padding:10}}>
-											<Text>{this.props.navigation.getParam('dureeEvent')} minutes</Text>
+										<ListItem style={{borderColor: 'white', borderRightWidth:1,  borderBottomWidth:0, padding:10}}>
+											<Text style={{color:"white"}}>{this.props.navigation.getParam('dureeEvent')} minutes</Text>
 										</ListItem>
 										<ListItem style={{padding:10}}>
-											<Text>{this.props.navigation.getParam('dateEvent')}</Text>
+											<Text style={{color:"white"}}>{this.props.navigation.getParam('dateEvent')}</Text>
 										</ListItem>
 									</List>
 								</View>
