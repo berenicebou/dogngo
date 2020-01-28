@@ -22,13 +22,16 @@ import {
   Right,
   Card,
   Fab, 
-  Icon
+  Icon,
+  List,
+  ListItem
 } from 'native-base';
 import Colors from '../constants/Colors';
 import Texts from '../constants/Texts';
 
 
 import news from '../data/newsData';
+import eventsData from '../data/eventData';
 
 import NewItem from '../components/NewItem';
 import AdItem from '../components/AdItem';
@@ -39,8 +42,15 @@ export default class HomeScreen extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      active: false
+      active: false,
+      balades: []
     };
+  }
+
+  componentDidMount(){
+    this.setState({
+      balades : eventsData.filter(data => data.type === "Balades")
+    })
   }
   render() {
     return (
@@ -66,7 +76,26 @@ export default class HomeScreen extends React.Component {
         {/* LES BALADES PROCHES */}
         <Content>
           <Text style={Texts.h1}>Les balades proches de moi</Text>
-          
+          <Card transparent>
+              <List
+                dataArray={this.state.balades} 
+                horizontal={true}
+                renderRow={(balade) =>
+                  <ListItem transparent>
+                      <TouchableOpacity>
+                      <View style={styles.photoList}>
+                        <Image
+                            style={styles.cardPhoto}
+                            resizeMode="center"
+                            source={balade.photo}
+                        />
+                        <Text style={styles.labelPhoto}>{balade.date} à {balade.heure}</Text>              
+                      </View>         
+                    </TouchableOpacity>
+                      </ListItem>
+                  } transparent>
+                </List>
+            </Card>
         </Content>
 
         {/* ACTUALITES */}
@@ -172,5 +201,39 @@ const styles = StyleSheet.create({
     alignItems: 'flex-end',
     margin:10,
     padding:10,
+  },  
+  photoList:{
+    borderBottomWidth: 0,
+    marginTop:-70,
+    justifyContent:'center',
+    alignContent:'center',
+    alignItems:'center',
+    height:380,
+    width:170,
+    flexDirection:'column',
+    flex:1,
+    margin:-10,
+    marginBottom:-40,
+    marginRight: -20,
   },
+  cardPhoto:{
+    flex:1, 
+    height: "100%",
+    width:"90%",
+    padding:0, 
+    alignSelf:'center' 
+  },
+  labelPhoto:{
+    backgroundColor: Colors.tintColor,
+    borderBottomEndRadius:20,
+    borderBottomLeftRadius:20,
+    borderBottomRightRadius:20,
+    borderBottomStartRadius:20,
+    bottom:60,
+    width:155,
+    padding:10,
+    textAlign:'center',
+    justifyContent:'center',
+    position:"absolute",  
+  }
 });
