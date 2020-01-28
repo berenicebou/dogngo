@@ -7,10 +7,13 @@ export default data = [
        type: "Balades",
        duree: "20",
        date: "15/02/20",
+       heure: '15h30',
        parcours: "2.3",
        latitude:43.161260,
        longitude:6.067227,
-       icon:require('../assets/images/marqueurs-02.png')
+       icon:require('../assets/images/marqueurs-02.png'),
+       description:'',
+      photo:require('../assets/images/domaineBalade.png')
     },
     {
       id:2,
@@ -20,22 +23,39 @@ export default data = [
       date: "25/01/20",
       parcours: "2.4",
       latitude:43.183259,
-      longitude:5.899638,
-      icon:require('../assets/images/marqueurs-02.png')
+      longitude:5.899638, 
+      icon:require('../assets/images/marqueurs-02.png'),
+      description:'',
+      photo:require('../assets/images/caumeBalade.png')
    },
    {
       id:3,
-      title:"Parc de la tour royale",
+      title:"Balade foret",
       type : "Balades",
       duree: "40",
       date: "02/03/20",
       parcours: "3",   
-      latitude:3.105255,
-      longitude:5.927721,
-      icon:require('../assets/images/marqueurs-02.png')
+      latitude:43.105452,
+      longitude:5.927411,
+      icon:require('../assets/images/marqueurs-02.png'),
+      photo:require('../assets/images/foretBalade.png'),
+      description:'',
   },
   {
-    id:4,
+   id:4,
+   title:"Parc de la tour royale",
+   type : "Balades",
+   duree: "40",
+   date: "02/03/20",
+   parcours: "3",   
+   latitude:43.105452,
+   longitude:5.927411,
+   icon:require('../assets/images/marqueurs-02.png'),
+   photo:require('../assets/images/tourBalade.png'),
+   description:'',
+},
+  {
+    id:5,
     title:"Salon du chiot de Toulon",
     type: "Salon",
     duree: "40",
@@ -43,9 +63,33 @@ export default data = [
     parcours: "3",
     latitude:43.124830,
     longitude:5.928624,
-    icon:require('../assets/images/marqueurs-03.png')
-
-    }
+    icon:require('../assets/images/marqueurs-03.png'),
+    description:'',
+  },
+  {
+   id:6,
+   title:"Clinique Vétérinaire du Las",
+   type: "Vétérinaire",
+   duree: "40",
+   date: "02/03/20",
+   parcours: "3",
+   latitude:43.132642,
+   longitude:5.914065,
+   icon:require('../assets/images/marqueurs-01.png'),
+   description:'',
+ },
+ {
+   id:7,
+   title:"Cabinet Vétérinaire médico-chirurgical du Docteur Gelot Eric",
+   type: "Vétérinaire",
+   duree: "40",
+   date: "02/03/20",
+   parcours: "3",
+   latitude:43.118860,
+   longitude:5.944964,
+   icon:require('../assets/images/marqueurs-01.png'),
+   description:'',
+ },
  ] 
 
  

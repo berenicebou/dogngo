@@ -33,15 +33,9 @@ export default data = {
          {
             id:1,
             photo:require('../assets/images/image-28map.png'),
-            date:"31/01",
+            date:"15/02",
             heure:"15:30"
          },
-         {
-            id:2,
-            photo:require('../assets/images/image-28map.png'),
-            date:"10/02",
-            heure:"17:00"
-         }
       ],
       posts:[
          {
