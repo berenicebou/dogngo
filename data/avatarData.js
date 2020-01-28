@@ -12,7 +12,7 @@ export default data = {
        baladesEffectuees:[
          {
             id:1,
-            photo:require('../assets/images/image-26.png'),
+            photo:require('../assets/images/domaineBalade.png'),
             date:"12/01",
             heure:"16:30"
          },

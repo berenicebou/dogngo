@@ -13,7 +13,22 @@ export default data = [
        longitude:6.067227,
        icon:require('../assets/images/marqueurs-02.png'),
        description:'',
-      photo:require('../assets/images/domaineBalade.png')
+      photo:require('../assets/images/domaineBalade.png'),
+      difficulté:"facile",
+      photos:[
+        {
+           id:1,
+           photo:require("../assets/images/walk2.jpg")
+        },
+        {
+           id:2,
+          photo:require("../assets/images/walk3.jpg")
+       },
+       {
+          id:3,
+          photo:require("../assets/images/walk4.jpg")
+       },
+      ]
     },
     {
       id:2,
@@ -26,7 +41,8 @@ export default data = [
       longitude:5.899638, 
       icon:require('../assets/images/marqueurs-02.png'),
       description:'',
-      photo:require('../assets/images/caumeBalade.png')
+      photo:require('../assets/images/caumeBalade.png'),
+      difficulté:"difficile"
    },
    {
       id:3,
@@ -53,6 +69,7 @@ export default data = [
    icon:require('../assets/images/marqueurs-02.png'),
    photo:require('../assets/images/tourBalade.png'),
    description:'',
+   difficulté:"Moyenne"
 },
   {
     id:5,
