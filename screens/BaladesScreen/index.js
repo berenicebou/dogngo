@@ -17,7 +17,6 @@ class BaladesScreen extends React.Component {
   }
 
   _displayDetailBalade = (idEvent, type) => {
-    console.log(idEvent)
     if(type == "Effectue"){
       this.props.navigation.navigate('BaladeDetailEffectue', {idEvent : idEvent})
     } else {
@@ -43,7 +42,7 @@ class BaladesScreen extends React.Component {
                 dataArray={avatar.baladesAVenir} 
                 horizontal={true}
                 renderRow={(balade) =>
-                  <ListItem>
+                  <ListItem transparent>
                     <TouchableOpacity onPress={() => this._displayDetailBalade(balade.id, "AVenir")}>
                       <View style={styles.photoList}>
                         <Image
@@ -55,7 +54,7 @@ class BaladesScreen extends React.Component {
                       </View>         
                     </TouchableOpacity>             
                   </ListItem>
-                }>
+                } transparent>
               </List>
             </Card>
 
@@ -111,16 +110,14 @@ const styles = StyleSheet.create({
     marginLeft:-15,
   },
   titleCard:{
-    marginBottom:-50,
+    marginBottom:-40,
   },
   cardItemPhoto:{
     height:320,
-    marginLeft:-10,
-    marginBottom:-40
   },
   listItemCard:{
     borderBottomWidth: 0, 
-    marginTop:-50, 
+    marginTop:-90, 
     paddingTop:0,
   },
   photoList:{
@@ -149,10 +146,12 @@ const styles = StyleSheet.create({
     borderBottomLeftRadius:20,
     borderBottomRightRadius:20,
     borderBottomStartRadius:20,
+    bottom:40,
+    width:160,
     padding:10,
     textAlign:'center',
-    marginTop:-100,
-    width:180,
+    justifyContent:'center',
+    position:"absolute",  
   }
 });
 

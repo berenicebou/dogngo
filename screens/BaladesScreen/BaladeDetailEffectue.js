@@ -13,15 +13,21 @@ export default class BaladeDetailEffectue extends React.Component {
 	constructor(props) {
 		super(props)
 		this.state = {
-			event: undefined, 
-			isLoading: false 
-		}
+			balade: undefined, 
+			isLoading: true 
+        }
+        
 	}
 	
 	componentDidMount(){
-		const {navigation} = this.props;
-	}
+        const {navigation} = this.props;
+        this.setState({
+            balade: event.find(data => data.id === this.props.navigation.getParam('idEvent')),
+            isLoading: false
+          })
+    }
     
+   
   _displayLoading() {
     if (this.state.isLoading) {
     	return (
@@ -31,34 +37,34 @@ export default class BaladeDetailEffectue extends React.Component {
       )
     }
   }
+
+  
   
   static navigationOptions = ({ navigation }) => {
     return {
-	  headerStyle: {
+	    headerStyle: {
 		marginTop:-50
 	}
     };
   };
     
-	render() {
-        return (
-          <Content style={styles.main_container}>
-
-            {this._displayLoading()}
-
-							<Card transparent>
-								<CardItem>		
-								<Left>
-									<Thumbnail source={require("../../assets/images/portrait2.png")}/>
-									<Body>
-										<Text>Paul Lemaire</Text>
-										<Text note>et son bichon</Text>
-									</Body>
-								</Left>
-								<Right style={{flexDirection:'row'}}>
-									<Thumbnail style={{marginRight:-20, zIndex:3}} source={require("../../assets/images/portrait3.png")}/>
-									<Thumbnail style={{marginRight:-20, zIndex:2}} source={require("../../assets/images/portrait4.png")}/>
-									<Thumbnail style={{marginRight:-20, zIndex:1}} source={require("../../assets/images/portrait5.png")}/>
+  _displayBalade() {
+    if (this.state.balade != undefined) {
+      return (
+        <Content style={styles.main_container}>
+            <Card transparent>
+			<CardItem>		
+				<Left>
+					<Thumbnail source={require("../../assets/images/portrait2.png")}/>
+					<Body>
+						<Text>Paul Lemaire</Text>
+						<Text note>et son bichon</Text>
+					</Body>
+				</Left>
+				<Right style={{flexDirection:'row'}}>
+					<Thumbnail style={{marginRight:-20, zIndex:3}} source={require("../../assets/images/portrait3.png")}/>
+					<Thumbnail style={{marginRight:-20, zIndex:2}} source={require("../../assets/images/portrait4.png")}/>
+					<Thumbnail style={{marginRight:-20, zIndex:1}} source={require("../../assets/images/portrait5.png")}/>
 								</Right>
 								<Text>+23</Text>
 								</CardItem>
@@ -68,13 +74,13 @@ export default class BaladeDetailEffectue extends React.Component {
 								<View style={{flex: 1, justifyContent: 'center'}}>
 									<List style={{ flexDirection:'row', justifyContent: 'center', backgroundColor:Colors.tintColor}}>
 										<ListItem style={{borderColor: 'black', borderRightWidth:1, borderBottomWidth:0, padding:10}}>
-											<Text>TEST km</Text>
+											<Text>{this.state.balade.parcours} km</Text>
 										</ListItem>
 										<ListItem style={{borderColor: 'black', borderRightWidth:1,  borderBottomWidth:0, padding:10}}>
-											<Text>TEST minutes</Text>
+											<Text>{this.state.balade.duree} minutes</Text>
 										</ListItem>
 										<ListItem style={{padding:10}}>
-											<Text>TEST</Text>
+											<Text>{this.state.balade.date}</Text>
 										</ListItem>
 									</List>
 								</View>
@@ -84,12 +90,12 @@ export default class BaladeDetailEffectue extends React.Component {
 								<Image style={{height: 300, width: null, flex: 1}} source={require('../../assets/images/map.png')}/>
 							</Content>
 
-								<Content style={{marginTop:-10}}>
-								    <Button disabled style={{ height:50, backgroundColor: Colors.buttonColor, flex:1}} full>
-												<Text>Effectue</Text>
-                                                <Icon name="checkcircleo" type="AntDesign"/>
-											</Button>
-									</Content>																
+							<Content style={{marginTop:-10}}>
+								<Button disabled style={{ height:50, backgroundColor: Colors.buttonColor, flex:1}} full>
+									<Text>Effectue</Text>
+                                    <Icon name="checkcircleo" type="AntDesign"/>
+								</Button>
+							</Content>																
 							
 							
 						
@@ -117,6 +123,15 @@ export default class BaladeDetailEffectue extends React.Component {
 						</Content>
 
           </Content>
+        )
+      }
+    }
+    render() {
+        return (
+          <View style={styles.main_container}>
+            {this._displayLoading()}
+            {this._displayBalade()}
+          </View>
         )
       }
     }
