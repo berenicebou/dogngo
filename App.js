@@ -4,7 +4,7 @@ import * as Font from 'expo-font';
 import React, { useState } from 'react';
 import { Platform, StyleSheet, Image } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
-import { Container, Text, Header, Left, Right, Thumbnail, Icon} from 'native-base';
+import { Container, Text, Header, Left, Right, Thumbnail, Icon, Root} from 'native-base';
 import Colors from './constants/Colors';
 
 
@@ -53,7 +53,9 @@ export default function App(props) {
             />
           </Right>
         </Header>
+        <Root>
         <AppNavigator />
+        </Root>
       </Container>
     );
   }

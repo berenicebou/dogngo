@@ -2,7 +2,7 @@
 
 import React from 'react'
 import { StyleSheet, View, ActivityIndicator, Image} from 'react-native'
-import { Text, Content, Thumbnail, Left, Body, CardItem, Card, Right, List, ListItem, Button } from 'native-base'
+import { Text, Content, Thumbnail, Left, Body, CardItem, Card, Right, List, ListItem, Button, Icon,Toast } from 'native-base'
 
 import event from "../../data/eventData"
 import chiens from '../../data/chienData'
@@ -14,7 +14,9 @@ class EventDetail extends React.Component {
 		super(props)
 		this.state = {
 			event: undefined, 
-			isLoading: false 
+			isLoading: false,
+			participe: undefined,
+			showToast : false,
 		}
 	}
 	
@@ -31,6 +33,25 @@ class EventDetail extends React.Component {
       )
     }
   }
+
+  ClickParticipate = () => {
+    if (this.state.participe == true) {
+	  this.setState({ participe: false });
+	  return (Toast.show({
+		text: "Balade ajouté !",
+
+		buttonText: "Okay",
+		duration: 3000
+	  }))
+    } else {
+	  this.setState({ participe: true });
+	  return (Toast.show({
+		text: "Vous ne participez plus à la balade !",		
+		buttonText: "Okay",
+		duration: 3000
+	  }))
+    }
+  };
   
   static navigationOptions = ({ navigation }) => {
     return {
@@ -93,13 +114,22 @@ class EventDetail extends React.Component {
 								</Left>
 								<Body>
 									<Content style={{marginTop:-40}}>
-											<Button rounded style={{backgroundColor: Colors.buttonColor, height:50}}>
+										{this.state.participe ? (
+											<Button rounded style={{backgroundColor: Colors.buttonColor, height:50}} onPress={ () => this.ClickParticipate()}>
 												<Text>Participer</Text>
+											</Button>) : 
+											<Button rounded style={{backgroundColor: Colors.buttonColor, height:50}} onPress={ () => this.ClickParticipate()}>
+												<Text>Je participe</Text>
 											</Button>
+										}
 									</Content>
 								</Body>
-								<Right style={{flexDirection:'row'}}>
-									
+								<Right style={{flexDirection:'row', marginTop:-10, right:-10}}>
+									<Icon style={{color: Colors.tintColor}} name="star" type="FontAwesome"/>
+									<Icon style={{color: Colors.tintColor}} name="star" type="FontAwesome"/>
+									<Icon style={{color: Colors.tintColor}} name="star" type="FontAwesome"/>
+									<Icon style={{color: Colors.tintColor}} name="star" type="FontAwesome"/>
+									<Icon style={{color: Colors.tintColor}} name="star-half-empty" type="FontAwesome"/>
 								</Right>
 								</CardItem>
 							</Card>
