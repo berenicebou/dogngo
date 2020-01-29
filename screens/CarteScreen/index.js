@@ -27,9 +27,9 @@ class CarteScreen extends React.Component {
       })
 }
   
-  _displayDetailEvent = (idEvent, titleEvent, typeEvent, dureeEvent, parcoursEvent, dateEvent, descriptionEvent, paramEvent, heureEvent) => {
+  _displayDetailEvent = (idEvent, titleEvent) => {
     console.log(idEvent, titleEvent)
-    this.props.navigation.navigate("EventDetail" , { idEvent: idEvent, titleEvent: titleEvent, typeEvent :typeEvent, dureeEvent: dureeEvent, parcoursEvent: parcoursEvent, dateEvent: dateEvent, descriptionEvent: descriptionEvent, paramEvent: paramEvent, heureEvent: heureEvent })
+    this.props.navigation.navigate("EventDetail" , { idEvent: idEvent, titleEvent: titleEvent})
   }
 
   ShowHideComponent = () => {
@@ -69,7 +69,7 @@ class CarteScreen extends React.Component {
                 title={marker.title}
                 description={marker.type}
                 image={marker.icon}
-                onCalloutPress={() => this._displayDetailEvent(marker.id, marker.title, marker.type, marker.duree, marker.parcours, marker.date, marker.description, marker.param, marker.heure)}
+                onCalloutPress={() => this._displayDetailEvent(marker.id, marker.title)}
               />
             ))}     
       </MapView> 
