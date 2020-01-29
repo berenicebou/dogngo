@@ -10,7 +10,8 @@ import * as Permissions from 'expo-permissions';
 
 
 import event from "../../data/eventData"
-import chiens from '../../data/chienData'
+import avatar from '../../data/avatarData'
+import chiensData from '../../data/chienData'
 import Texts from "../../constants/Texts"
 import Colors from '../../constants/Colors'
 
@@ -24,6 +25,7 @@ export default class BaladeDetailEffectue extends React.Component {
 		this.state = {
 			balade: undefined, 
 			isLoading: true,
+			chiens:[]
 		}
         
 	}
@@ -32,10 +34,10 @@ export default class BaladeDetailEffectue extends React.Component {
         const {navigation} = this.props;
         this.setState({
             balade: event.find(data => data.id === this.props.navigation.getParam('idEvent')),
-            isLoading: false
+			isLoading: false,
+			chiens :  [ avatar.chien, ...chiensData]
 		  })
 		this.getPermissionAsync();
-		console.log('hi');
 	}
 	
 	getPermissionAsync = async () => {
@@ -75,6 +77,7 @@ export default class BaladeDetailEffectue extends React.Component {
   
   static navigationOptions = ({ navigation }) => {
     return {
+		title:"Domaine de la Castille",
 	    headerStyle: {
 		marginTop:-50
 	}
@@ -115,7 +118,7 @@ export default class BaladeDetailEffectue extends React.Component {
 											<Text style={{color:"white"}}>{this.state.balade.duree} minutes</Text>
 										</ListItem>
 										<ListItem style={{padding:10}}>
-											<Text style={{color:"white"}}>{this.state.balade.date}</Text>
+											<Text style={{color:"white"}}>{this.state.balade.date} à {this.state.balade.heure}</Text>
 										</ListItem>
 									</List>
 								</View>
@@ -138,11 +141,13 @@ export default class BaladeDetailEffectue extends React.Component {
 						<Content>
 							<Card transparent>
 								<Text style={Texts.h1}>Les chiens présents</Text>
-								<List dataArray={chiens} horizontal={true}
-                    renderRow={(chien) =>
+								<List 
+									dataArray={this.state.chiens} 
+									horizontal={true}
+                    				renderRow={(chien) =>
 									<ListItem style={{borderBottomWidth: 0, marginTop:0, paddingTop:0}}>
 											<Left>
-												<Thumbnail source={chien.img}/>
+												<Thumbnail source={chien.photo}/>
 												<Body>
 													<Text>{chien.nom}</Text>
 													<Text note>{chien.race}, {chien.age} ans</Text>

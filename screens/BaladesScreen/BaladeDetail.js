@@ -5,7 +5,8 @@ import { StyleSheet, View, ActivityIndicator, Image} from 'react-native'
 import { Text, Content, Thumbnail, Left, Body, CardItem, Card, Right, List, ListItem, Button, Icon } from 'native-base'
 
 import event from "../../data/eventData"
-import chiens from '../../data/chienData'
+import chiensData from '../../data/chienData'
+import avatar from '../../data/avatarData'
 import Texts from "../../constants/Texts"
 import Colors from '../../constants/Colors'
 
@@ -14,7 +15,8 @@ export default class BaladeDetail extends React.Component {
 		super(props)
 		this.state = {
 			balade: undefined, 
-			isLoading: true 
+			isLoading: true,
+			chiens : [],
         }
         
 	}
@@ -23,7 +25,8 @@ export default class BaladeDetail extends React.Component {
         const {navigation} = this.props;
         this.setState({
             balade: event.find(data => data.id === this.props.navigation.getParam('idEvent')),
-            isLoading: false
+			isLoading: false,
+			chiens :  [ avatar.chien, ...chiensData]
 		  })
 	}
     
@@ -79,7 +82,7 @@ export default class BaladeDetail extends React.Component {
 											<Text style={{color:"white"}}>{this.state.balade.duree} minutes</Text>
 										</ListItem>
 										<ListItem style={{padding:10}}>
-											<Text style={{color:"white"}}>{this.state.balade.date}</Text>
+											<Text style={{color:"white"}}>{this.state.balade.date} à {this.state.balade.heure}</Text>
 										</ListItem>
 									</List>
 								</View>
@@ -121,27 +124,59 @@ export default class BaladeDetail extends React.Component {
 							
 							
 						
-
+						{/* CHIENS PRESENTS */}
 						<Content>
 							<Card transparent>
 								<Text style={Texts.h1}>Les chiens présents</Text>
-								<List dataArray={chiens} horizontal={true}
-                    renderRow={(chien) =>
+								<List 
+									dataArray={this.state.chiens} 
+									horizontal={true}
+                    				renderRow={(chien) =>
 									<ListItem style={{borderBottomWidth: 0, marginTop:0, paddingTop:0}}>
 											<Left>
-												<Thumbnail source={chien.img}/>
+												<Thumbnail source={chien.photo}/>
 												<Body>
 													<Text>{chien.nom}</Text>
-													<Text note>{chien.race}, {chien.age} ans</Text>
+													<Text note>{chien.race}, {chien.age}</Text>
 												</Body>
 											</Left>
 									</ListItem>
 									}>
 								</List>
-								<CardItem>
-									
-								</CardItem>
 							</Card>
+
+							{/* DESCRIPTION */}
+							<Card transparent>
+								<Text style={Texts.h1}>Description</Text>
+									<CardItem>
+										<List 
+											numColumns={3}
+											dataArray={this.state.balade.param}
+											renderRow={(param) =>
+											<Button disabled style={{height:30, backgroundColor: 'white', margin:2, borderColor:Colors.tintColor, borderWidth:2}} rounded>
+												<Text uppercase={false} style={{color:'black', fontSize:15}}>{param.name}</Text>
+											</Button>
+										}></List>
+									</CardItem>
+									<CardItem style={{marginTop:0, paddingTop:0}}>
+										<Text>{this.state.balade.description}</Text>
+									</CardItem>
+							</Card>
+
+
+							{/* PHOTO DU LIEU */}
+							<Card transparent>
+								<Text style={Texts.h1}>Les photos du lieu</Text>
+									<CardItem>
+										<List
+											horizontal={true}
+											dataArray={this.state.balade.photoLieu}
+											renderRow={(photo) =>
+											<Image style={{width: 160, height: 160, margin:10}} source={photo.photo}/>
+										}></List>
+									</CardItem>
+							</Card>
+
 						</Content>
 
           </Content>

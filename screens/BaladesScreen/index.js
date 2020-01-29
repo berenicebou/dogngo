@@ -42,7 +42,7 @@ class BaladesScreen extends React.Component {
                 dataArray={avatar.baladesAVenir} 
                 horizontal={true}
                 renderRow={(balade) =>
-                  <ListItem transparent>
+                  <ListItem style={{borderColor: 'transparent'}}>
                     <TouchableOpacity onPress={() => this._displayDetailBalade(balade.id, "AVenir")}>
                       <View style={styles.photoList}>
                         <Image
@@ -68,7 +68,7 @@ class BaladesScreen extends React.Component {
                 dataArray={avatar.baladesEffectuees} 
                 horizontal={true}
                 renderRow={(balade) =>
-                  <ListItem transparent>
+                  <ListItem style={{borderColor: 'transparent'}}>
                       <TouchableOpacity onPress={() => this._displayDetailBalade(balade.id, "Effectue")}>
                       <View style={styles.photoList}>
                         <Image
@@ -117,27 +117,27 @@ const styles = StyleSheet.create({
   },
   listItemCard:{
     borderBottomWidth: 0, 
-    marginTop:-90, 
+    marginTop:20, 
     paddingTop:0,
   },
   photoList:{
     borderBottomWidth: 0,
-    marginTop:0,
+    marginTop:-50,
     justifyContent:'center',
     alignContent:'center',
     alignItems:'center',
-    height:320,
-    width:180,
+    height:380,
+    width:170,
     flexDirection:'column',
     flex:1,
-    margin:-10,
+    margin:-1,
+    marginBottom:-40,
   },
   cardPhoto:{
     flex:1, 
     height: "100%",
     width:"90%",
     padding:0, 
-    margin:10,
     alignSelf:'center' 
   },
   labelPhoto:{
@@ -146,12 +146,13 @@ const styles = StyleSheet.create({
     borderBottomLeftRadius:20,
     borderBottomRightRadius:20,
     borderBottomStartRadius:20,
-    bottom:40,
-    width:160,
+    bottom:60,
+    width:155,
     padding:10,
     textAlign:'center',
     justifyContent:'center',
-    position:"absolute",  
+    position:"absolute",
+    color: 'white'  
   }
 });
 
