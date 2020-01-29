@@ -27,9 +27,9 @@ class CarteScreen extends React.Component {
       })
 }
   
-  _displayDetailEvent = (idEvent, titleEvent, typeEvent, dureeEvent, parcoursEvent, dateEvent) => {
+  _displayDetailEvent = (idEvent, titleEvent, typeEvent, dureeEvent, parcoursEvent, dateEvent, descriptionEvent, paramEvent, heureEvent) => {
     console.log(idEvent, titleEvent)
-    this.props.navigation.navigate("EventDetail" , { idEvent: idEvent, titleEvent: titleEvent, typeEvent :typeEvent, dureeEvent: dureeEvent, parcoursEvent: parcoursEvent, dateEvent: dateEvent })
+    this.props.navigation.navigate("EventDetail" , { idEvent: idEvent, titleEvent: titleEvent, typeEvent :typeEvent, dureeEvent: dureeEvent, parcoursEvent: parcoursEvent, dateEvent: dateEvent, descriptionEvent: descriptionEvent, paramEvent: paramEvent, heureEvent: heureEvent })
   }
 
   ShowHideComponent = () => {
@@ -69,29 +69,28 @@ class CarteScreen extends React.Component {
                 title={marker.title}
                 description={marker.type}
                 image={marker.icon}
-                onCalloutPress={() => this._displayDetailEvent(marker.id, marker.title, marker.type, marker.duree, marker.parcours, marker.date)}
-              //   image={marker.icon}
+                onCalloutPress={() => this._displayDetailEvent(marker.id, marker.title, marker.type, marker.duree, marker.parcours, marker.date, marker.description, marker.param, marker.heure)}
               />
             ))}     
       </MapView> 
       
       <View style={styles.headerSearch}>
         <Card style={styles.searchBar} transparent>
-            <Item>
+            <Item transparent style={{borderWidth:0, borderColor: 'transparent'}}>
               <Input backgroundColor="white" style={{borderRadius:20}} />
-              <Button rounded style={{backgroundColor:Colors.tintColor}}>
+              <Button rounded style={{backgroundColor:Colors.tintColor, marginLeft:-40, height:50}}>
                 <Text>Chercher</Text>
               </Button>
             </Item>     
         </Card>
-        <Card transparent style={{flexDirection:'row'}}>
+        <Card transparent style={{flexDirection:'row', marginTop:-5}}>
         <Button title="Hide/Show Component" onPress={this.ShowHideComponent} transparent>
-              <Icon style={{backgroundColor:"black"}} name="ios-arrow-forward" type="Ionicons"/>
-              <Text style={styles.btnFiltres}>Filtre</Text>
+              <Icon style={{color:"black"}} name="ios-arrow-forward" type="Ionicons"/>
+              <Text style={{color:'balck', marginLeft:-20}}>Filtre</Text>
         </Button>
         {this.state.filtre ? (
-        <Button rounded disabled style={{backgroundColor:"white", borderColor:Colors.tintColor}}>
-          <Text>{this.state.filtre}</Text>
+        <Button rounded disabled style={{backgroundColor:Colors.tintColor, marginTop:8, height:30}}>
+          <Text uppercase={false}>{this.state.filtre}</Text>
         </Button>
         ) : null }
         </Card>
@@ -164,13 +163,15 @@ const styles = StyleSheet.create({
   searchBar:{
     backgroundColor: 'transparent',
     borderRadius:50,
+    borderWidth:0,
   },
   headerSearch:{
     position:'absolute',
     top:10,
     bottom:0,
     left:20,
-    right:20
+    right:20,
+    borderWidth:0
   },
   filtreContent:{
     backgroundColor: 'rgba(255,255,255,0.6)',

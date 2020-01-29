@@ -104,8 +104,8 @@ export default data = {
          }
       ],
       chien:{
-         id:1,
-         prenom:"Lokkie",
+         id:9,
+         nom:"Lokkie",
          race:'Carlin',
          age:'2 ans',
          photo:require('../assets/images/image-29.png'),

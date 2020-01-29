@@ -12,9 +12,26 @@ export default data = [
        latitude:43.161260,
        longitude:6.067227,
        icon:require('../assets/images/marqueurs-02.png'),
-       description:'',
+       description:'Balade dans le domaine de la Castille, longeant tour à tour les vignes, la rivière, le canal, la cascade ou s’engouffrant dans des espaces de prairie ou de forêt. La dénivellation est très faible ',
       photo:require('../assets/images/domaineBalade.png'),
-      difficulté:"facile",
+      difficulte:"facile",
+      param:[
+         {
+            name:"Facile"
+         },
+         {
+            name:"Parking gratuit"
+         },
+         {
+            name:"Terrain plat"
+         },
+         {
+            name:"Boucle"
+         },
+         {
+            name:"Foret"
+         }
+      ],
       photos:[
         {
            id:1,
@@ -42,7 +59,20 @@ export default data = [
       icon:require('../assets/images/marqueurs-02.png'),
       description:'',
       photo:require('../assets/images/caumeBalade.png'),
-      difficulté:"difficile"
+      param:[
+         {
+            name:"Facile"
+         },
+         {
+            name:"Parking gratuit"
+         },
+         {
+            name:"Terrain accidenté"
+         },
+         {
+            name:"Montagne"
+         }
+      ],
    },
    {
       id:3,
@@ -69,7 +99,7 @@ export default data = [
    icon:require('../assets/images/marqueurs-02.png'),
    photo:require('../assets/images/tourBalade.png'),
    description:'',
-   difficulté:"Moyenne"
+   difficulte:"Moyenne"
 },
   {
     id:5,
