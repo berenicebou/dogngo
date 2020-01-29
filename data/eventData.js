@@ -45,6 +45,14 @@ export default data = [
           id:3,
           photo:require("../assets/images/walk4.jpg")
        },
+      ],
+      photoLieu:[
+         {
+            photo:require('../assets/images/balade2.jpg')
+         },
+         {
+            photo:require('../assets/images/domaineCastille.jpg')
+         }
       ]
     },
     {
@@ -53,6 +61,7 @@ export default data = [
       type: "Balades",
       duree: "35",
       date: "25/01/20",
+      heure:'12h30',
       parcours: "2.4",
       latitude:43.183259,
       longitude:5.899638, 
@@ -73,6 +82,14 @@ export default data = [
             name:"Montagne"
          }
       ],
+      photos:[
+         {
+            photo:require('../assets/images/balade2.jpg')
+         },
+         {
+            photo:require('../assets/images/domaineCastille.jpg')
+         }
+      ]
    },
    {
       id:3,
@@ -80,6 +97,7 @@ export default data = [
       type : "Balades",
       duree: "40",
       date: "02/03/20",
+      heure:'14h30',
       parcours: "3",   
       latitude:43.105452,
       longitude:5.927411,
@@ -93,6 +111,7 @@ export default data = [
    type : "Balades",
    duree: "40",
    date: "02/03/20",
+   heure:'10h30',
    parcours: "3",   
    latitude:43.105452,
    longitude:5.927411,
