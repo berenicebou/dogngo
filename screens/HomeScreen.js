@@ -52,6 +52,7 @@ export default class HomeScreen extends React.Component {
       balades : eventsData.filter(data => data.type === "Balades")
     })
   }
+
   render() {
     return (
     <Container>
@@ -81,7 +82,7 @@ export default class HomeScreen extends React.Component {
                 dataArray={this.state.balades} 
                 horizontal={true}
                 renderRow={(balade) =>
-                  <ListItem transparent>
+                  <ListItem style={{borderColor: 'transparent'}}>
                       <TouchableOpacity>
                       <View style={styles.photoList}>
                         <Image
@@ -234,6 +235,7 @@ const styles = StyleSheet.create({
     padding:10,
     textAlign:'center',
     justifyContent:'center',
-    position:"absolute",  
+    position:"absolute",
+    color: 'white'   
   }
 });
